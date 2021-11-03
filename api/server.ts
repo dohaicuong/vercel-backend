@@ -6,9 +6,9 @@ server.register(cors)
 
 import mercurius from 'mercurius'
 import { schema } from './schema'
-// import { context } from './context'
+import { context } from './context'
 server.register(mercurius, {
   schema,
   graphiql: true,
-  // context,
+  context,
 })

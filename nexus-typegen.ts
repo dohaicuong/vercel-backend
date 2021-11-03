@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./api/context/index"
 
 
 
@@ -28,6 +28,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Post: { // root type
+    body: string; // String!
+    id: string; // ID!
+    title: string; // String!
+  }
   Query: {};
 }
 
@@ -42,14 +47,24 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Post: { // field return type
+    body: string; // String!
+    id: string; // ID!
+    title: string; // String!
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    posts: NexusGenRootTypes['Post'][]; // [Post!]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Post: { // field return type name
+    body: 'String'
+    id: 'ID'
+    title: 'String'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    posts: 'Post'
   }
 }
 
@@ -87,7 +102,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
