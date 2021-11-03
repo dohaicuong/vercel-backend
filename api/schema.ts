@@ -1,9 +1,20 @@
-import { makeSchema } from 'nexus'
+import { connectionPlugin, makeSchema } from 'nexus'
 import { join } from 'path'
+import NexusPrismaScalars from 'nexus-prisma/scalars'
 import * as types from './graphql'
 
 export const schema = makeSchema({
-  types,
+  types: {
+    NexusPrismaScalars,
+    ...types
+  },
+  plugins: [
+    connectionPlugin({
+      disableBackwardPagination: true,
+      strictArgs: true,
+      nonNullDefaults: { output: true },
+    })
+  ],
   contextType: {
     module: join(__dirname, 'context', 'index.ts'),
     export: 'Context'
