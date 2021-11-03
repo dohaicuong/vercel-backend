@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --no-notify graphql/index.ts",
-    "build": "tsc & mkdir public & touch public/index.html"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
