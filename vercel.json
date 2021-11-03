@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/graphql/index.ts"
+      "destination": "/api/serverless.ts"
     }
   ]
 }

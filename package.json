@@ -5,8 +5,8 @@
   "author": "Eric Do",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --no-notify graphql/index.ts",
-    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel": "vercel dev"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
