@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel": "vercel dev",
-    "vercel-build": "npm run migrate && prisma generate",
+    "vercel-build": "npm run migrate && npm run generate-client",
     "migrate": "DATABASE_URL=\"$MIGRATE_DATABASE_URL\" prisma migrate deploy",
     "generate-client": "PRISMA_CLIENT_ENGINE_TYPE='dataproxy' prisma generate"
   },
