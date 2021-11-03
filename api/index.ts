@@ -1,5 +1,5 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import { server } from './server'
+import { server } from '../graphql/server'
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   await server.ready()
