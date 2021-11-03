@@ -1,3 +1,4 @@
 .vercel
 dist
+public
 node_modules
