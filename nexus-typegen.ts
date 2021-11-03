@@ -80,6 +80,10 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  PostCreateInput: { // input type
+    body: string; // String!
+    title: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -100,6 +104,7 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   PageInfo: { // root type
     endCursor?: string | null; // String
     hasNextPage: boolean; // Boolean!
@@ -113,6 +118,9 @@ export interface NexusGenObjects {
   PostConnection: { // root type
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
+  }
+  PostCreatePayload: { // root type
+    post: NexusGenRootTypes['Post']; // Post!
   }
   PostEdge: { // root type
     cursor: string; // String!
@@ -133,6 +141,9 @@ export type NexusGenRootTypes = NexusGenInterfaces & NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    postCreate: NexusGenRootTypes['PostCreatePayload']; // PostCreatePayload!
+  }
   PageInfo: { // field return type
     endCursor: string | null; // String
     hasNextPage: boolean; // Boolean!
@@ -148,6 +159,9 @@ export interface NexusGenFieldTypes {
     edges: NexusGenRootTypes['PostEdge'][]; // [PostEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
   }
+  PostCreatePayload: { // field return type
+    post: NexusGenRootTypes['Post']; // Post!
+  }
   PostEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Post']; // Post!
@@ -162,6 +176,9 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    postCreate: 'PostCreatePayload'
+  }
   PageInfo: { // field return type name
     endCursor: 'String'
     hasNextPage: 'Boolean'
@@ -177,6 +194,9 @@ export interface NexusGenFieldTypeNames {
     edges: 'PostEdge'
     pageInfo: 'PageInfo'
   }
+  PostCreatePayload: { // field return type name
+    post: 'Post'
+  }
   PostEdge: { // field return type name
     cursor: 'String'
     node: 'Post'
@@ -191,6 +211,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    postCreate: { // args
+      input: NexusGenInputs['PostCreateInput']; // PostCreateInput!
+    }
+  }
   Query: {
     node: { // args
       id: string; // ID!
@@ -212,7 +237,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 
