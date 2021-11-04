@@ -1,7 +1,7 @@
 import { connectionPlugin, makeSchema } from 'nexus'
 import { join } from 'path'
 import NexusPrismaScalars from 'nexus-prisma/scalars'
-import * as types from './graphql'
+import * as types from './types'
 
 export const schema = makeSchema({
   types: {
