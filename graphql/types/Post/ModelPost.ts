@@ -6,5 +6,6 @@ export const ModelPost = objectType({
     t.implements('Node')
     t.nonNull.string('title')
     t.nonNull.string('body')
+    t.media('logo')
   }
 })

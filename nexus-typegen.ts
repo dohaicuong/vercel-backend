@@ -5,6 +5,7 @@
 
 
 import type { Context } from "./graphql/context/index"
+import type { FileUploadPromise, Media } from "./graphql/types/scalars/Upload"
 import type { core, connectionPluginCore } from "nexus"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -33,6 +34,11 @@ declare global {
      * Must and only use for input
      */
     relayId<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "RelayId";
+    /**
+     * The `Upload` scalar type represents a file upload.
+     */
+    upload<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Upload";
+    media<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Media";
   }
 }
 declare global {
@@ -63,6 +69,11 @@ declare global {
      */
     relayId<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "RelayId";
     /**
+     * The `Upload` scalar type represents a file upload.
+     */
+    upload<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Upload";
+    media<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Media";
+    /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
      * @see https://nexusjs.org/docs/plugins/connection
@@ -82,6 +93,7 @@ declare global {
 export interface NexusGenInputs {
   PostCreateInput: { // input type
     body: string; // String!
+    logo?: NexusGenScalars['Upload'] | null; // Upload
     title: string; // String!
   }
 }
@@ -100,7 +112,9 @@ export interface NexusGenScalars {
   DateTime: any
   Decimal: any
   Json: any
+  Media: Media
   RelayId: any
+  Upload: FileUploadPromise
 }
 
 export interface NexusGenObjects {
@@ -113,6 +127,7 @@ export interface NexusGenObjects {
   }
   Post: { // root type
     body: string; // String!
+    logo?: NexusGenScalars['Media'] | null; // Media
     title: string; // String!
   }
   PostConnection: { // root type
@@ -153,6 +168,7 @@ export interface NexusGenFieldTypes {
   Post: { // field return type
     body: string; // String!
     id: string; // ID!
+    logo: NexusGenScalars['Media'] | null; // Media
     title: string; // String!
   }
   PostConnection: { // field return type
@@ -188,6 +204,7 @@ export interface NexusGenFieldTypeNames {
   Post: { // field return type name
     body: 'String'
     id: 'ID'
+    logo: 'Media'
     title: 'String'
   }
   PostConnection: { // field return type name
